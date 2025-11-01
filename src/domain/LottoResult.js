@@ -61,7 +61,13 @@ class LottoResult {
   }
 
   #getTotalPrize() {
-    // TODO: 총상금 계산
+    return (
+      this.#statistics.MATCH_3 * PRIZE.MATCH_3 +
+      this.#statistics.MATCH_4 * PRIZE.MATCH_4 +
+      this.#statistics.MATCH_5 * PRIZE.MATCH_5 +
+      this.#statistics.MATCH_5_BONUS * PRIZE.MATCH_5_BONUS +
+      this.#statistics.MATCH_6 * PRIZE.MATCH_6
+    );
   }
 
   getProfitRate() {
