@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from "../utils/error.js";
+import { ERROR_MESSAGES } from '../utils/error.js';
 class Lotto {
   #numbers;
 
@@ -13,7 +13,9 @@ class Lotto {
     }
   }
 
-  // TODO: 추가 기능 구현
+  getNumbers() {
+    return [...this.#numbers];
+  }
 }
 
 export default Lotto;
