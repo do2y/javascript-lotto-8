@@ -50,13 +50,13 @@ class LottoResult {
     }
   }
 
-  #calculateStatistics(tickets) {
-    tickets.forEach((ticket) => {
-      const nums = ticket.getNumbers();
-      const cnt = this.#countMatchingNumbers(nums);
-      const hasBonus = nums.includes(this.#bonusNumber);
+  #calculateStatistics() {
+    this.#tickets.forEach((ticket) => {
+      const numbers = ticket.getNumbers();
+      const matchCount = this.#countMatchingNumbers(numbers);
+      const hasBonus = numbers.includes(this.#bonusNumber);
 
-      this.#updateWinningStats(cnt, hasBonus); //당첨 업데이트 - 등수
+      this.#updateWinningStats(matchCount, hasBonus); //당첨 업데이트 - 등수
     });
   }
 
