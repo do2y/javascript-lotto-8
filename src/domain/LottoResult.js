@@ -70,6 +70,10 @@ class LottoResult {
     );
   }
 
+  getStatistic(result) {
+    return { ...this.#statistics };
+  }
+
   getProfitRate() {
     const spent = this.#tickets.length * LOTTO.PRICE;
     const totalPrize = this.#getTotalPrize();
