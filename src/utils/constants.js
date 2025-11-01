@@ -6,9 +6,9 @@ export const LOTTO = {
 };
 
 export const PRIZE = {
-  3: 5_000,
-  4: 50_000,
-  5: 1_500_000,
-  '5+bonus': 30_000_000,
-  6: 2_000_000_000,
+  MATCH_3: 5_000,
+  MATCH_4: 50_000,
+  MATCH_5: 1_500_000,
+  MATCH_5_BONUS: 30_000_000,
+  MATCH_6: 2_000_000_000,
 };
