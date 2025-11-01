@@ -1,3 +1,5 @@
+import { PRIZE } from '../utils/constants';
+
 class LottoResult {
   #tickets;
   #winningNumbers;
@@ -8,7 +10,13 @@ class LottoResult {
     this.#tickets = tickets;
     this.#winningNumbers = winningNumbers.map(Number);
     this.#bonusNumber = Number(bonusNumber);
-    this.#statistics = { 3: 0, 4: 0, 5: 0, '5+bonus': 0, 6: 0 }; //결과 표
+    this.#statistics = {
+      MATCH_3: 0,
+      MATCH_4: 0,
+      MATCH_5: 0,
+      MATCH_5_BONUS: 0,
+      MATCH_6: 0,
+    };
     this.#calculateStatistics();
   }
 
@@ -18,23 +26,27 @@ class LottoResult {
 
   #updateWinningStats(matchCount, hasBonus) {
     if (matchCount === 6) {
-      this.#statistics[6]++;
+      this.#statistics.MATCH_6++;
       return;
     }
+
     if (matchCount === 5 && hasBonus) {
-      this.#statistics['5+bonus']++;
+      this.#statistics.MATCH_5_BONUS++;
       return;
     }
+
     if (matchCount === 5) {
-      this.#statistics[5]++;
+      this.#statistics.MATCH_5++;
       return;
     }
+
     if (matchCount === 4) {
-      this.#statistics[4]++;
+      this.#statistics.MATCH_4++;
       return;
     }
+
     if (matchCount === 3) {
-      this.#statistics[3]++;
+      this.#statistics.MATCH_3++;
     }
   }
 
@@ -48,12 +60,12 @@ class LottoResult {
     });
   }
 
-  #getTotalReward() {
+  #getTotalPrize() {
     // TODO: 총상금 계산
   }
 
   getProfitRate() {
-    const totalReward = this.#getTotalReward;
+    const totalPrize = this.#getTotalPrize;
     // TODO: 수익률 계산
   }
 }
