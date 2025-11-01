@@ -1,5 +1,5 @@
-import { LOTTO } from "../utils/constants.js";
-import { ERROR_MESSAGES } from "../utils/error.js";
+import { LOTTO } from '../utils/constants.js';
+import { ERROR_MESSAGES } from '../utils/error.js';
 
 class Validator {
   static validatePurchaseAmount(amount) {

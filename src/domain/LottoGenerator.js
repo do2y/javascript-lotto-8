@@ -1,6 +1,6 @@
-import { Random } from "@woowacourse/mission-utils";
-import Lotto from "./Lotto.js";
-import { LOTTO } from "../utils/constants.js";
+import { Random } from '@woowacourse/mission-utils';
+import Lotto from './Lotto.js';
+import { LOTTO } from '../utils/constants.js';
 
 class LottoGenerator {
   static generateTickets(amount) {
@@ -11,7 +11,7 @@ class LottoGenerator {
       const numbers = Random.pickUniqueNumbersInRange(
         LOTTO.MIN,
         LOTTO.MAX,
-        LOTTO.COUNT
+        LOTTO.COUNT,
       );
 
       const ticket = new Lotto(numbers);
