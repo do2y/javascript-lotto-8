@@ -9,6 +9,18 @@ class Validator {
       throw new Error(ERROR_MESSAGES.INVALID_AMOUNT);
     }
   }
+
+  static validateBonusNumber(bonusNumber, winningNumbers) {
+    const num = Number(bonusNumber);
+
+    if (!Number.isInteger(num) || num < LOTTO.MIN || num < LOTTO.MAX) {
+      throw new Error(ERROR_MESSAGES.INVALID_RANGE);
+    }
+
+    if (winningNumbers.includes(num)) {
+      throw new Error(ERROR_MESSAGES.DUPLICATED_NUMBER);
+    }
+  }
 }
 
 export default Validator;
