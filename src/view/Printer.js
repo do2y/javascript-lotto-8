@@ -1,6 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
 
-// 1. 로또 수량, 2. 로또 티켓, 3. 당첨 통계, 4. 수익률 출력
 class Printer {
   static printPurchasedAmount(count) {
     Console.print(`\n${count}개를 구매했습니다.`);
@@ -12,10 +11,14 @@ class Printer {
     });
   }
 
-  //   static printStatistics(result) {
-  //     Console.print('\n당첨 통계\n---');
-
-  //   }
+  static printStatistics(statistics) {
+    Console.print('\n당첨 통계\n---');
+    Console.print(`3개 일치 (5,000원) - ${statistics.MATCH_3}개`);
+    Console.print(`4개 일치 (50,000원) - ${statistics.MATCH_4}개`);
+    Console.print(`5개 일치 (1,500,000원) - ${statistics.MATCH_5}개`);
+    Console.print(`5개 일치, 보너스 볼 일치 (30,000,000원) - ${statistics.MATCH_5_BONUS}개`);
+    Console.print(`6개 일치 (2,000,000,000원) - ${statistics.MATCH_6}개`);
+  }
 
   static printProfitRate(profitRate) {
     Console.print(`총 수익률은 ${profitRate}%입니다.`);
