@@ -1,4 +1,4 @@
-import { PRIZE } from '../utils/constants';
+import { PRIZE, LOTTO } from '../utils/constants';
 
 class LottoResult {
   #tickets;
@@ -56,7 +56,7 @@ class LottoResult {
       const matchCount = this.#countMatchingNumbers(numbers);
       const hasBonus = numbers.includes(this.#bonusNumber);
 
-      this.#updateWinningStats(matchCount, hasBonus); //당첨 업데이트 - 등수
+      this.#updateWinningStats(matchCount, hasBonus);
     });
   }
 
@@ -71,7 +71,11 @@ class LottoResult {
   }
 
   getProfitRate() {
-    const totalPrize = this.#getTotalPrize;
-    // TODO: 수익률 계산
+    const spent = this.#tickets.length * LOTTO.PRICE;
+    const totalPrize = this.#getTotalPrize();
+    const profitRate = (totalPrize / spent) * 100;
+    return profitRate.toFixed(1);
   }
 }
+
+export default LottoResult;
