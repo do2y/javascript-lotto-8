@@ -28,7 +28,7 @@ class Validator {
   static validateBonusNumber(bonusNumber, winningNumbers) {
     const num = Number(bonusNumber);
 
-    if (!Number.isInteger(num) || num < LOTTO.MIN || num < LOTTO.MAX) {
+    if (!Number.isInteger(num) || num < LOTTO.MIN || num > LOTTO.MAX) {
       throw new Error(ERROR_MESSAGES.INVALID_RANGE);
     }
 
