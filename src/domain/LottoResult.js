@@ -70,7 +70,7 @@ class LottoResult {
     );
   }
 
-  getStatistic(result) {
+  getStatistics(result) {
     return { ...this.#statistics };
   }
 

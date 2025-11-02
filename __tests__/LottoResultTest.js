@@ -18,7 +18,7 @@ describe('LottoResult 클래스 테스트', () => {
       const bonusNumber = 7;
 
       const result = new LottoResult(tickets, winningNumbers, bonusNumber);
-      const stats = result.getStatistic();
+      const stats = result.getStatistics();
 
       expect(stats.MATCH_6).toBe(1);
       expect(stats.MATCH_5_BONUS).toBe(1);
