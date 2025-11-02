@@ -34,7 +34,7 @@ class Validator {
     }
 
     if (winningNumbers.includes(num)) {
-      throw new Error(ERROR_MESSAGES.DUPLICATED_NUMBER);
+      throw new Error(ERROR_MESSAGES.DUPLICATED_WINING_NUMBER);
     }
   }
 }
