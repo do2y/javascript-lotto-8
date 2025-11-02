@@ -10,6 +10,21 @@ class Validator {
     }
   }
 
+  static validateWinningNumbers(winningNumbers) {
+    if (winningNumbers.some((num) => Number.isNaN(num))) {
+      throw new Error(ERROR_MESSAGES.INVALID_WINNING_NUMBER);
+    }
+
+    if (winningNumbers.some((num) => num < LOTTO.MIN || num > LOTTO.MAX)) {
+      throw new Error(ERROR_MESSAGES.INVALID_RANGE);
+    }
+
+    const uniqueNumbers = new Set(winningNumbers);
+    if (uniqueNumbers.size !== winningNumbers.length) {
+      throw new Error(ERROR_MESSAGES.DUPLICATE_NUMBER);
+    }
+  }
+
   static validateBonusNumber(bonusNumber, winningNumbers) {
     const num = Number(bonusNumber);
 
