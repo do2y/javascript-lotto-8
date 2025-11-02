@@ -1,4 +1,4 @@
-import { PRIZE, LOTTO } from '../utils/constants';
+import { PRIZE, LOTTO } from '../utils/constants.js';
 
 class LottoResult {
   #tickets;
