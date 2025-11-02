@@ -8,6 +8,7 @@ class Validator {
     if (!Number.isInteger(lottoAmount) || lottoAmount % LOTTO.PRICE !== 0) {
       throw new Error(ERROR_MESSAGES.INVALID_AMOUNT);
     }
+    return lottoAmount;
   }
 
   static validateWinningNumbers(winningNumbers) {
