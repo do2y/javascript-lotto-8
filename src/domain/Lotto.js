@@ -1,5 +1,5 @@
-import { ERROR_MESSAGES } from "../utils/error.js";
-import { LOTTO } from "../utils/constants.js";
+import { ERROR_MESSAGES } from '../utils/error.js';
+import { LOTTO } from '../utils/constants.js';
 class Lotto {
   #numbers;
 
@@ -13,8 +13,8 @@ class Lotto {
       throw new Error(ERROR_MESSAGES.INVALID_LENGTH);
     }
 
-    if (numbers.some((num) => typeof num !== "number" || Number.isNaN(num))) {
-      throw new Error(ERROR_MESSAGES.INVALID_WINNING_NUMBER);
+    if (numbers.some((num) => typeof num !== 'number' || Number.isNaN(num))) {
+      throw new Error(ERROR_MESSAGES.INVALID_NUMBER);
     }
 
     if (numbers.some((num) => num < LOTTO.MIN || num > LOTTO.MAX)) {
