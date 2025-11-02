@@ -12,7 +12,7 @@ class Validator {
   }
 
   static validateWinningNumbers(winningNumbers) {
-    if (winningNumbers.some((num) => Number.isNaN(num))) {
+    if (winningNumbers.some((num) => typeof num !== 'number' || Number.isNaN(num))) {
       throw new Error(ERROR_MESSAGES.INVALID_WINNING_NUMBER);
     }
 
