@@ -12,6 +12,14 @@ class Validator {
   }
 
   static validateWinningNumbers(winningNumbers) {
+    if (!Array.isArray(winningNumbers)) {
+      throw new Error(ERROR_MESSAGES.INVALID_WINNING_NUMBER);
+    }
+
+    if (winningNumbers.length !== LOTTO.COUNT) {
+      throw new Error(ERROR_MESSAGES.INVALID_LENGTH);
+    }
+
     if (winningNumbers.some((num) => typeof num !== 'number' || Number.isNaN(num))) {
       throw new Error(ERROR_MESSAGES.INVALID_WINNING_NUMBER);
     }
