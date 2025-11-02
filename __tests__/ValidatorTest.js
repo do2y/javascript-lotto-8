@@ -34,7 +34,7 @@ describe('Validator 클래스 테스트', () => {
     test('중복된 숫자가 포함되면 예외가 발생한다.', () => {
       const duplicateNumbers = [1, 2, 3, 3, 4, 5];
       expect(() => Validator.validateWinningNumbers(duplicateNumbers)).toThrow(
-        ERROR_MESSAGES.DUPLICATE_NUMBER
+        ERROR_MESSAGES.DUPLICATED_NUMBER
       );
     });
 

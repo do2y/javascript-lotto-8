@@ -22,7 +22,7 @@ class Validator {
 
     const uniqueNumbers = new Set(winningNumbers);
     if (uniqueNumbers.size !== winningNumbers.length) {
-      throw new Error(ERROR_MESSAGES.DUPLICATE_NUMBER);
+      throw new Error(ERROR_MESSAGES.DUPLICATED_NUMBER);
     }
   }
 
@@ -34,7 +34,7 @@ class Validator {
     }
 
     if (winningNumbers.includes(num)) {
-      throw new Error(ERROR_MESSAGES.DUPLICATED_WINING_NUMBER);
+      throw new Error(ERROR_MESSAGES.DUPLICATED_BONUS_NUMBER);
     }
   }
 }
