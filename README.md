@@ -9,6 +9,42 @@ _3주차 우아한테크코스 프리코스 미션_
 
 <br>
 
+## 실행 방법
+
+```bash
+npm install
+# 프로그램 실행
+npm run start
+# 테스트 실행
+npm run test
+```
+
+<br>
+
+## 폴더 구조
+
+```
+src
+├── App.js
+├── domain
+│   ├── Lotto.js
+│   ├── LottoGenerator.js
+│   └── LottoResult.js
+├── utils
+│   ├── constants.js
+│   ├── error.js
+│   ├── messages.js
+│   ├── Parser.js
+│   └── Validator.js
+├── view
+│   ├── InputView.js
+│   ├── Printer.js
+│   └── InputHandler.js
+└── index.js
+```
+
+<br>
+
 ## 프로그래밍 요구사항
 
 ```text
@@ -119,4 +155,17 @@ _3주차 우아한테크코스 프리코스 미션_
 5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
 6개 일치 (2,000,000,000원) - 0개
 총 수익률은 62.5%입니다.
+```
+
+<br>
+
+## 테스트 구성
+
+```
+- `LottoTest.js`: Lotto 클래스 유효성 검증
+- `LottoGenerator.js`: 로또 생성 로직 검증
+- `LottoResultTest.js`: 당첨 통계 및 수익률 계산 검증
+- `ValidatorTest.js`: 입력 검증 로직 테스트
+- `ParserTest.js`: 당첨 번호 파싱 테스트
+- `ApplicationTest.js`: 전체 실행 흐름 테스트
 ```
