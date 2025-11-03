@@ -3,11 +3,39 @@ import { ERROR_MESSAGES } from '../utils/error.js';
 
 class Validator {
   static validatePurchaseAmount(amount) {
+    if (amount === null || amount === undefined || amount === '') {
+      throw new Error(ERROR_MESSAGES.EMPTY_INPUT);
+    }
+
+    if (!/^\d+$/.test(amount)) {
+      throw new Error(ERROR_MESSAGES.INVALID_POSITIVE_NUMBER);
+    }
+
     const lottoAmount = Number(amount);
-    if (!Number.isInteger(lottoAmount) || lottoAmount % LOTTO.PRICE !== 0) {
+
+    if (!Number.isInteger(lottoAmount) || lottoAmount <= 0) {
+      throw new Error(ERROR_MESSAGES.INVALID_POSITIVE_NUMBER);
+    }
+
+    if (lottoAmount % LOTTO.PRICE !== 0) {
       throw new Error(ERROR_MESSAGES.INVALID_AMOUNT);
     }
+
     return lottoAmount;
+  }
+
+  static validateWinningNumbersInput(input) {
+    if (typeof input !== 'string' || input.trim() === '') {
+      throw new Error(ERROR_MESSAGES.EMPTY_INPUT);
+    }
+
+    if (/,{2,}/.test(input)) {
+      throw new Error(ERROR_MESSAGES.INVALID_DELIMITER);
+    }
+
+    const numbers = input.split(',').map((n) => Number(n.trim()));
+    this.validateWinningNumbers(numbers);
+    return numbers;
   }
 
   static validateWinningNumbers(numbers) {
@@ -41,7 +69,15 @@ class Validator {
   }
 
   static validateBonusNumber(bonusNumber, winningNumbers) {
+    if (bonusNumber === null || bonusNumber === undefined || bonusNumber === '') {
+      throw new Error(ERROR_MESSAGES.EMPTY_INPUT);
+    }
+
     const num = Number(bonusNumber);
+
+    if (Number.isNaN(num)) {
+      throw new Error(ERROR_MESSAGES.INVALID_RANGE);
+    }
 
     this.#validateBonusRange(num);
     this.#validateBonusUniqueness(num, winningNumbers);
