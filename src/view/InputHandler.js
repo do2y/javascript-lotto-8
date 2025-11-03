@@ -12,9 +12,7 @@ class InputHandler {
 
   static async readWinningNumbers() {
     return this.#retryUntilValid(InputView.readLottoNumbers, (input) => {
-      const numbers = Parser.parseLottoNumbers(input);
-      Validator.validateWinningNumbers(numbers);
-      return numbers;
+      return Validator.validateWinningNumbersInput(input);
     });
   }
 
