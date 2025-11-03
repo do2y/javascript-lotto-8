@@ -4,32 +4,38 @@ import { ERROR_MESSAGES } from '../utils/error.js';
 class Validator {
   static validatePurchaseAmount(amount) {
     const lottoAmount = Number(amount);
-
     if (!Number.isInteger(lottoAmount) || lottoAmount % LOTTO.PRICE !== 0) {
       throw new Error(ERROR_MESSAGES.INVALID_AMOUNT);
     }
     return lottoAmount;
   }
 
-  static validateWinningNumbers(winningNumbers) {
-    if (!Array.isArray(winningNumbers)) {
+  static validateWinningNumbers(numbers) {
+    this.#validateArrayAndLength(numbers);
+    this.#validateNumberTypeAndRange(numbers);
+    this.#validateNoDuplicates(numbers);
+  }
+
+  static #validateArrayAndLength(numbers) {
+    if (!Array.isArray(numbers)) {
       throw new Error(ERROR_MESSAGES.INVALID_WINNING_NUMBER);
     }
 
-    if (winningNumbers.length !== LOTTO.COUNT) {
+    if (numbers.length !== LOTTO.COUNT) {
       throw new Error(ERROR_MESSAGES.INVALID_LENGTH);
     }
+  }
 
-    if (winningNumbers.some((num) => typeof num !== 'number' || Number.isNaN(num))) {
-      throw new Error(ERROR_MESSAGES.INVALID_WINNING_NUMBER);
-    }
+  static #validateNumberTypeAndRange(numbers) {
+    const isInvalidType = numbers.some((n) => typeof n !== 'number' || Number.isNaN(n));
+    const isOutOfRange = numbers.some((n) => n < LOTTO.MIN || n > LOTTO.MAX);
 
-    if (winningNumbers.some((num) => num < LOTTO.MIN || num > LOTTO.MAX)) {
-      throw new Error(ERROR_MESSAGES.INVALID_RANGE);
-    }
+    if (isInvalidType) throw new Error(ERROR_MESSAGES.INVALID_WINNING_NUMBER);
+    if (isOutOfRange) throw new Error(ERROR_MESSAGES.INVALID_RANGE);
+  }
 
-    const uniqueNumbers = new Set(winningNumbers);
-    if (uniqueNumbers.size !== winningNumbers.length) {
+  static #validateNoDuplicates(numbers) {
+    if (new Set(numbers).size !== numbers.length) {
       throw new Error(ERROR_MESSAGES.DUPLICATED_NUMBER);
     }
   }
@@ -37,10 +43,17 @@ class Validator {
   static validateBonusNumber(bonusNumber, winningNumbers) {
     const num = Number(bonusNumber);
 
+    this.#validateBonusRange(num);
+    this.#validateBonusUniqueness(num, winningNumbers);
+  }
+
+  static #validateBonusRange(num) {
     if (!Number.isInteger(num) || num < LOTTO.MIN || num > LOTTO.MAX) {
       throw new Error(ERROR_MESSAGES.INVALID_RANGE);
     }
+  }
 
+  static #validateBonusUniqueness(num, winningNumbers) {
     if (winningNumbers.includes(num)) {
       throw new Error(ERROR_MESSAGES.DUPLICATED_BONUS_NUMBER);
     }
