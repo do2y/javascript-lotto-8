@@ -1,6 +1,5 @@
 import LottoGenerator from '../src/domain/LottoGenerator.js';
 import { LOTTO } from '../src/utils/constants.js';
-import Lotto from '../src/domain/Lotto.js';
 
 describe('LottoGenerator 클래스 테스트', () => {
   describe('generateTickets()', () => {
